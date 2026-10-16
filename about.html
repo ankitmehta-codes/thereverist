@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About — The Reverist</title>
+<meta name="description" content="What a reverist is, and why this page exists.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  /* Day from 6am to 6pm on the visitor's own clock, night otherwise, unless they choose for this visit. */
+  (function () {
+    var t;
+    try { t = sessionStorage.getItem("reverist-theme"); } catch (e) {}
+    if (t !== "day" && t !== "night") { var h = new Date().getHours(); t = h >= 6 && h < 18 ? "day" : "night"; }
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the page</a>
+<header class="bar">
+  <a class="brand" href="./" aria-label="The Reverist, home"><i data-logo></i><span>The Reverist</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="archive.html">Archive</a>
+    <a href="about.html" aria-current="page">About</a>
+    <button type="button" class="mode" data-mode>Day</button>
+  </nav>
+</header>
+<main class="page" id="main">
+  <div class="define">
+    <div class="word">reverist</div>
+    <p class="sense">(n.) rev-er-ist. One who gets lost in thought.</p>
+  </div>
+  <div class="prose">
+    <p>The Reverist collects short lines that make you stop. One at a time, with nothing else on the page, because a good line deserves a moment of quiet around it.</p>
+    <p>Some lines have travelled a long way and nobody remembers who said them first. Others are written here, and those carry their author's name.</p>
+
+    <h2>One line every Sunday</h2>
+    <p>Get a single line in your inbox each Sunday, and nothing else. <a href="mailto:the.reverist.official@gmail.com?subject=Subscribe%20to%20Sunday%20lines&amp;body=Please%20add%20me%20to%20the%20Sunday%20line.">Email us to subscribe</a>, and reply "stop" at any time to leave.</p>
+
+    <h2>Send us a line</h2>
+    <p>Written something that made you stare at a wall? <a href="mailto:the.reverist.official@gmail.com?subject=A%20line%20for%20The%20Reverist&amp;body=My%20line%3A%0A%0AName%20to%20credit%20(or%20anonymous)%3A%0A">Send it to us</a>. The best ones are posted with your name.</p>
+
+    <h2>Take a line with you</h2>
+    <p>Every line on the home page can be saved as an Instagram post or a phone wallpaper. In the evening the site turns dark; in the day it turns light. You can switch it yourself at the top of the page.</p>
+  </div>
+</main>
+<footer class="foot">
+  <p>The Reverist. For those who get lost in thought. <a href="https://www.instagram.com/_the.reverist_/">Instagram</a></p>
+</footer>
+<script src="assets/lines.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

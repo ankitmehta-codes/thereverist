@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Archive — The Reverist</title>
+<meta name="description" content="Every line from The Reverist, by mood.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  /* Day from 6am to 6pm on the visitor's own clock, night otherwise, unless they choose for this visit. */
+  (function () {
+    var t;
+    try { t = sessionStorage.getItem("reverist-theme"); } catch (e) {}
+    if (t !== "day" && t !== "night") { var h = new Date().getHours(); t = h >= 6 && h < 18 ? "day" : "night"; }
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the archive</a>
+<header class="bar">
+  <a class="brand" href="./" aria-label="The Reverist, home"><i data-logo></i><span>The Reverist</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="archive.html" aria-current="page">Archive</a>
+    <a href="about.html">About</a>
+    <button type="button" class="mode" data-mode>Day</button>
+  </nav>
+</header>
+<main class="page" id="main">
+  <h1>The archive</h1>
+  <p class="lede">Every line, newest first. Choose a mood, or search for a word that has been on your mind.</p>
+  <div class="tools">
+    <div class="moods" role="group" aria-label="Filter by mood"></div>
+    <label><span class="vh">Search the lines</span><input class="search" type="search" placeholder="Search the lines"></label>
+  </div>
+  <p class="count" aria-live="polite"></p>
+  <ul class="list"></ul>
+</main>
+<footer class="foot">
+  <p>The Reverist. For those who get lost in thought. <a href="https://www.instagram.com/_the.reverist_/">Instagram</a></p>
+</footer>
+<script src="assets/lines.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

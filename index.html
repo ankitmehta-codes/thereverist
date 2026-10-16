@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Reverist</title>
+<meta name="description" content="One line at a time, for those who get lost in thought.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  /* Day from 6am to 6pm on the visitor's own clock, night otherwise, unless they choose for this visit. */
+  (function () {
+    var t;
+    try { t = sessionStorage.getItem("reverist-theme"); } catch (e) {}
+    if (t !== "day" && t !== "night") { var h = new Date().getHours(); t = h >= 6 && h < 18 ? "day" : "night"; }
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#line">Skip to the line</a>
+<div class="home">
+<header class="bar">
+  <a class="brand" href="./" aria-label="The Reverist, home"><i data-logo></i><span>The Reverist</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="archive.html">Archive</a>
+    <a href="about.html">About</a>
+    <button type="button" class="mode" data-mode>Day</button>
+  </nav>
+</header>
+  <main class="stage" id="line">
+    <p class="line" aria-live="polite">&nbsp;</p>
+    <hr class="divider">
+    <p class="credit" hidden></p>
+  </main>
+  <div class="actions">
+    <a class="mood-link" href="archive.html">Browse the archive</a>
+    <div class="do">
+      <button type="button" class="primary" data-another>Another line</button>
+      <button type="button" data-share>Save as post</button>
+      <button type="button" data-wallpaper>Save as wallpaper</button>
+    </div>
+  </div>
+</div>
+<p class="status" role="status" aria-live="polite"></p>
+<script src="assets/lines.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
