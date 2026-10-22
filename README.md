@@ -4,7 +4,7 @@ A small, fully self-contained website. No third-party scripts, fonts, trackers o
 
 ## What's inside
 
-- `index.html` — today's line, full screen. "Another line" shows a new one; "Save as post" and "Save as wallpaper" download the line as an image in the brand design.
+- `index.html` — the latest line, full screen. "Another line" shows a new one; "Save as post" and "Save as wallpaper" download the line as an image in the brand design.
 - `archive.html` — every line, filterable by mood and searchable.
 - `about.html` — what a reverist is, the Sunday line, and how to send a line.
 - `404.html` — shown for any address that doesn't exist.
@@ -15,20 +15,11 @@ A small, fully self-contained website. No third-party scripts, fonts, trackers o
 
 The site switches to night mode from 6pm to 6am on each visitor's own clock, and to day mode otherwise. Visitors can switch it for their visit using the button in the top corner.
 
-## Adding a new line
+## Adding new lines
 
-Open `assets/lines.js` on GitHub, click the pencil icon, and add a new entry at the top of the list:
+Lines live in `assets/lines.js`, each with the date and time it goes out on Instagram (India time). The site shows a line only once that time has passed, so it stays in step with Instagram on its own.
 
-```js
-{ id: 22, text: "Your new line here.", mood: "time", added: "2026-10-17" },
-```
-
-- Give each line a new, unique `id` (one higher than the last).
-- `mood` must be one of: `solitude`, `time`, `love`, `self`, `change`.
-- For your own lines, add `by: "Ankit Mehta",` and the credit appears under the line.
-- Mind the quotes: if a line contains a double quote ("), type it as \" .
-
-Click **Commit changes**. The site updates within a minute or two.
+For each new batch, Claude sends you two things: an updated `assets/lines.js` and a folder of new pages for `l/` (one page per line, so every line has its own link). Upload both to GitHub (replace `lines.js`, and add the new files into the `l` folder), then commit. That's all.
 
 ## Putting it online (one-time setup)
 

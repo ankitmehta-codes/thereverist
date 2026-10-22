@@ -3,14 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>About — The Reverist</title>
+<title>About · The Reverist</title>
 <meta name="description" content="What a reverist is, and why this page exists.">
+<meta property="og:title" content="About · The Reverist">
+<meta property="og:description" content="What a reverist is, and why this page exists.">
+<meta property="og:url" content="https://thereverist.in/about.html">
+<meta property="og:site_name" content="The Reverist">
 <meta name="theme-color" content="#000000">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css">
+<link rel="canonical" href="https://thereverist.in/about.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css">
 <script>
-  /* Day from 6am to 6pm on the visitor's own clock, night otherwise, unless they choose for this visit. */
   (function () {
     var t;
     try { t = sessionStorage.getItem("reverist-theme"); } catch (e) {}
@@ -19,39 +23,37 @@
   })();
 </script>
 </head>
-<body>
+<body data-page="about">
 <a class="skip" href="#main">Skip to the page</a>
+<canvas class="dust" aria-hidden="true"></canvas>
 <header class="bar">
-  <a class="brand" href="./" aria-label="The Reverist, home"><i data-logo></i><span>The Reverist</span></a>
+  <a class="brand" href="/" aria-label="The Reverist, home"><i data-logo></i><span>The Reverist</span></a>
   <nav class="nav" aria-label="Main">
-    <a href="archive.html">Archive</a>
-    <a href="about.html" aria-current="page">About</a>
+    <a href="/archive.html">Archive</a>
+    <a href="/ankit.html">By Ankit</a>
+    <a href="/about.html" aria-current="page">About</a>
+    <a class="ig" href="https://www.instagram.com/_the.reverist_/" aria-label="Follow The Reverist on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
     <button type="button" class="mode" data-mode>Day</button>
   </nav>
 </header>
 <main class="page" id="main">
-  <div class="define">
+  <div class="define reveal">
     <div class="word">reverist</div>
     <p class="sense">(n.) rev-er-ist. One who gets lost in thought.</p>
   </div>
   <div class="prose">
-    <p>The Reverist collects short lines that make you stop. One at a time, with nothing else on the page, because a good line deserves a moment of quiet around it.</p>
-    <p>Some lines have travelled a long way and nobody remembers who said them first. Others are written here, and those carry their author's name.</p>
-
-    <h2>One line every Sunday</h2>
-    <p>Get a single line in your inbox each Sunday, and nothing else. <a href="mailto:the.reverist.official@gmail.com?subject=Subscribe%20to%20Sunday%20lines&amp;body=Please%20add%20me%20to%20the%20Sunday%20line.">Email us to subscribe</a>, and reply "stop" at any time to leave.</p>
-
-    <h2>Send us a line</h2>
-    <p>Written something that made you stare at a wall? <a href="mailto:the.reverist.official@gmail.com?subject=A%20line%20for%20The%20Reverist&amp;body=My%20line%3A%0A%0AName%20to%20credit%20(or%20anonymous)%3A%0A">Send it to us</a>. The best ones are posted with your name.</p>
-
-    <h2>Take a line with you</h2>
-    <p>Every line on the home page can be saved as an Instagram post or a phone wallpaper. In the evening the site turns dark; in the day it turns light. You can switch it yourself at the top of the page.</p>
+    <p class="reveal">The Reverist is one line at a time, with nothing else on the page, because a good line deserves a moment of quiet around it. Every line here is written by <a href="/ankit.html">Ankit Mehta</a>.</p>
+    <p class="reveal">New lines appear here as they are posted on Instagram, several times a day, with something special on festivals and meaningful days.</p>
+    <h2 class="reveal">One line every Sunday</h2>
+    <p class="reveal">Get a single line in your inbox each Sunday, and nothing else. <a href="mailto:the.reverist.official@gmail.com?subject=Subscribe%20to%20Sunday%20lines&amp;body=Please%20add%20me%20to%20the%20Sunday%20line.">Email us to subscribe</a>, and reply “stop” at any time to leave.</p>
+    <h2 class="reveal">Take a line with you</h2>
+    <p class="reveal">Every line can be shared, saved as an Instagram post or a phone wallpaper, or kept with the heart so you can find it again in the archive. In the evening the site turns dark; in the day it turns light.</p>
   </div>
 </main>
 <footer class="foot">
-  <p>The Reverist. For those who get lost in thought. <a href="https://www.instagram.com/_the.reverist_/">Instagram</a></p>
+  <p>The Reverist. Words by Ankit Mehta. <a href="https://www.instagram.com/_the.reverist_/">Instagram</a> · <a href="https://ankitmehta.in">ankitmehta.in</a></p>
 </footer>
-<script src="assets/lines.js"></script>
-<script src="assets/app.js"></script>
+<script src="/assets/lines.js"></script>
+<script src="/assets/app.js"></script>
 </body>
 </html>

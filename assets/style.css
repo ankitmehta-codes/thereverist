@@ -105,7 +105,7 @@ button {
   letter-spacing: 0.01em;
 }
 .brand i { display: inline-flex; }
-.brand svg { width: 34px; height: 34px; flex: none; }
+.brand svg { width: 34px; height: 34px; flex: none; overflow: visible; }
 .nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2rem); font-size: 0.95rem; }
 .nav a { text-decoration: none; color: var(--muted); transition: color 0.2s; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
@@ -220,10 +220,10 @@ button {
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--rule);
 }
-.moods { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
-.moods button { color: var(--muted); font-size: 0.95rem; padding: 0.15rem 0; border-bottom: 1px solid transparent; }
-.moods button:hover { color: var(--ink); }
-.moods button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--gold); }
+.tones { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+.tones button { color: var(--muted); font-size: 0.95rem; padding: 0.15rem 0; border-bottom: 1px solid transparent; }
+.tones button:hover { color: var(--ink); }
+.tones button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--gold); }
 .search {
   font: inherit;
   font-size: 0.95rem;
@@ -296,6 +296,80 @@ button {
   .search { min-width: 0; width: 100%; }
 }
 
+
+
+/* ---------- Motion ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.45s; }
+
+.dust { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.home, .page, .bar, .foot { position: relative; z-index: 1; }
+
+/* the logo breathes: rings turn slowly in opposite directions, the star twinkles */
+[data-logo] svg .ring { transform-origin: 100px 100px; transform-box: view-box; }
+[data-logo] svg .ring-0, [data-logo] svg .ring-2, [data-logo] svg .ring-4 { animation: turn 60s linear infinite; }
+[data-logo] svg .ring-1, [data-logo] svg .ring-3 { animation: turn 80s linear infinite reverse; }
+[data-logo] svg .star { transform-origin: 100px 100px; transform-box: view-box; animation: twinkle 3.2s ease-in-out infinite; }
+@keyframes turn { to { transform: rotate(360deg); } }
+@keyframes twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.25); opacity: .75; } }
+
+/* words drift in one by one */
+.line .w { display: inline-block; opacity: 0; filter: blur(6px); transform: translateY(0.25em); animation: word 0.9s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes word { to { opacity: 1; filter: blur(0); transform: none; } }
+.line.is-leaving .w { animation: leave 0.4s ease forwards; animation-delay: 0s !important; }
+@keyframes leave { to { opacity: 0; filter: blur(6px); transform: translateY(-0.2em); } }
+.divider { transform-origin: center; animation: grow 1.2s .4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes grow { from { transform: scaleX(0); } }
+.credit { animation: fade 1s .9s both; }
+@keyframes fade { from { opacity: 0; } }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* links with a gold underline that draws itself */
+.nav a, .actions button, .elsewhere a { background: linear-gradient(var(--gold), var(--gold)) left bottom / 0 1px no-repeat; transition: background-size .35s ease, color .2s; }
+.nav a:hover, .actions button:hover, .elsewhere a:hover { background-size: 100% 1px; }
+
+/* ---------- Header extras ---------- */
+.ig { display: inline-flex; color: var(--muted); }
+.ig:hover { color: var(--ink); }
+.ig svg { width: 20px; height: 20px; }
+
+/* ---------- Home extras ---------- */
+.credit a { color: inherit; text-decoration: none; }
+.credit a:hover { color: var(--gold); }
+.festival { margin: 2.5rem 0 0; width: min(560px, 100%); animation: fade 1.4s 1s both; }
+.festival[hidden] { display: none; }
+.festival img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.festival figcaption { margin-top: .6rem; color: var(--muted); font-size: .85rem; letter-spacing: .08em; }
+.actions .do { align-items: center; }
+.heart { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; color: var(--muted); }
+.heart svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: fill .2s; }
+.heart[aria-pressed="true"] { color: var(--gold); }
+.heart[aria-pressed="true"] svg { fill: currentColor; }
+.heart.pop svg { animation: pop .35s ease; }
+@keyframes pop { 50% { transform: scale(1.35); } }
+
+/* ---------- Archive extras ---------- */
+.list li { display: flex; align-items: center; gap: 1rem; }
+.list li a { flex: 1; }
+.list li.empty { display: block; }
+
+/* ---------- Author page ---------- */
+.author h1 { margin-bottom: .5rem; }
+.bio { font-family: var(--serif); font-style: italic; font-size: clamp(1.5rem, 3.4vw, 2.2rem); line-height: 1.3; color: var(--gold); margin: 0 0 2.5rem; max-width: 30rem; }
+.sigs { display: grid; gap: 0; margin: 1.5rem 0 3.5rem; border-top: 1px solid var(--rule); }
+.sig { display: block; padding: 1.6rem 0; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.25; text-decoration: none; transition: color .2s, padding-left .35s; }
+.sig:hover { color: var(--gold); padding-left: .6rem; }
+.label { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 3rem 0 .5rem; }
+.elsewhere { display: flex; flex-wrap: wrap; gap: .75rem 2rem; font-size: 1rem; }
+.elsewhere a { text-decoration: none; padding-bottom: 2px; }
+.soon { margin-top: 1rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 6px; max-width: 32rem; }
+.soon strong { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; display: block; margin-bottom: .3rem; }
+.soon span { color: var(--muted); }
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .line .w, .reveal { opacity: 1; filter: none; transform: none; }
 }
+.actions[hidden] { display: none; }
